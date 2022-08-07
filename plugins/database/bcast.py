@@ -44,8 +44,8 @@ async def broadcast_handler(m: Message):
         if not broadcast_ids.get(broadcast_id):
             break
     out = await m.reply_text(
-        
-)
+        text=f"Broadcast Started! You will be notified with log file when all the users are notified."
+    )
     start_time = time.time()
     total_users = await db.total_users_count()
     done = 0
@@ -56,14 +56,12 @@ async def broadcast_handler(m: Message):
         current=done,
         failed=failed,
         success=success
-   
- )
+    )
     async with aiofiles.open('broadcast.txt', 'w') as broadcast_log_file:
         async for user in all_users:
             sts, msg = await send_msg(
                 user_id=int(user['id']),
                 message=broadcast_msg
-                text=f"**•پخش ارسال این پیام به کاربران شروع شد.**\n\n**📌هنگامی که همه کابران مطلع شدند در قالب فایلی اطلاع رسانی میشود.**"
             )
             if msg is not None:
                 await broadcast_log_file.write(msg)
@@ -91,17 +89,18 @@ async def broadcast_handler(m: Message):
     await out.delete()
     if failed == 0:
         await m.reply_text(
-            text=f"**📲 ارسال پیام در تایم `{completed_in} شروع شد.**`\n\n"
-                 f"**👥 تعداد کاربران : {total_users} نفر**\n"
-                 f"✉️ مجموع پیام های انجام شده : {done}\n**✅ تعداد ارسال موفق :** {success}\n**❌ تعداد ارسال ناموفق :** {failed}",
+            text=f"broadcast completed in `{completed_in}`\n\n"
+                 f"Total users {total_users}.\n"
+                 f"Total done {done}, {success} success and {failed} failed.",
             quote=True
         )
     else:
         await m.reply_document(
             document='broadcast.txt',
-            caption=f"**📲 ارسال پیام در تایم `{completed_in} شروع شد.**`\n\n"
-                    f"**👥 تعداد کاربران :** {total_users} نفر \n"
-                    f"**✉️ مجموع پیام های انجام شده :** {done}\n**✅ تعداد ارسال موفق :** {success}\n**❌ تعداد ارسال ناموفق :** {failed}",
+            caption=f"broadcast completed in `{completed_in}`\n\n"
+                    f"Total users {total_users}.\n"
+                    f"Total done {done}, {success} success and {failed} failed.",
             quote=True
         )
     await aiofiles.os.remove('broadcast.txt')
+
