@@ -29,8 +29,8 @@ async def OpenSettings(m: "types.Message"):
     if thumbnail:
         buttons_markup.append([types.InlineKeyboardButton("🌆 نمایش عکس تامبنیل شما",
                                                           callback_data="showThumbnail")])
-    buttons_markup.append([types.InlineKeyboardButton("𝘅 بستن 𝘅",
-                                                      callback_data="close")])
+    buttons_markup.append([types.InlineKeyboardButton("↪️ بازگشت به منوی اصلی",
+                                                      callback_data="home")])
 
     try:
         await m.edit(
