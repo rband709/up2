@@ -97,7 +97,7 @@ async def broadcast_handler(m: Message):
     else:
         await m.reply_document(
             document='broadcast.txt',
-            caption=f"📲 ارسال پیام در تایم `{completed_in} انجام شد.**`\n\n"
+            caption=f"**📲 ارسال پیام در تایم`{completed_in}انجام شد.**`\n\n"
                     f"**👥 تعداد کاربران :** {total_users} نفر\n"
                     f"**✉️ مجموع انجام شده پیام :** {done}\n**✅ تعداد ارسال موفق :** {success} \n**❌ تعداد ارسال موفق :** {failed}",
             quote=True
