@@ -89,17 +89,17 @@ async def broadcast_handler(m: Message):
     await out.delete()
     if failed == 0:
         await m.reply_text(
-            text=f"broadcast completed in `{completed_in}`\n\n"
-                 f"Total users {total_users}.\n"
-                 f"Total done {done}, {success} success and {failed} failed.",
+            text=f"**📲 ارسال پیام در تایم `{completed_in}` به پایان رسید**\n\n"
+                 f"**👥 تعداد کاربران :** {total_users} نفر\n"
+                 f"**✉️ مجموع انجام شده پیام :** {done}\n**✅ تعداد ارسال موفق :** {success} \n**❌ تعداد ارسال موفق :** {failed}",
             quote=True
         )
     else:
         await m.reply_document(
             document='broadcast.txt',
-            caption=f"broadcast completed in `{completed_in}`\n\n"
-                    f"Total users {total_users}.\n"
-                    f"Total done {done}, {success} success and {failed} failed.",
+            caption=f"📲 ارسال پیام در تایم `{completed_in} به پایان رسید**`\n\n"
+                    f"**👥 تعداد کاربران :** {total_users} نفر\n"
+                    f"**✉️ مجموع انجام شده پیام :** {done}\n**✅ تعداد ارسال موفق :** {success} \n**❌ تعداد ارسال موفق :** {failed}",
             quote=True
         )
     await aiofiles.os.remove('broadcast.txt')
