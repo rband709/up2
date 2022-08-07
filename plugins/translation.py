@@ -34,8 +34,6 @@ class Translation(object):
 
 🌀 **ورژن** :** [v-2.0](https://t.me/ir_uploadbot) •**
 
-👥 **گروه پشتیبانی** :** [Support-Group](https://t.me/dlchinhub) •**
-
 🛠️ **مدیر و سازنده ربات** :** [FﾑRSみɨの-BﾑŊの](https://t.me/FarshidBand) •**
 
 """
