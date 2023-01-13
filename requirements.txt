@@ -6,7 +6,7 @@ Pillow
 pyrogram==1.4.16
 requests
 tgcrypto
-git+https://github.com/rband709/yt-dlp#egg=yt-dlp
+git+https://github.com/rband709/yt-dlp1#egg=yt-dlp1
 yt-dlp
 olefile
 motor==2.5.1
